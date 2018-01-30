@@ -1,0 +1,200 @@
+<style type="text/css">
+	#progressbar {
+		width: 				50%;
+		float:				left;
+	}
+
+	#update_percent {
+		float:				left;
+		font-weight:		bold;
+		font-size:			110%;
+		margin:				0 10px;
+		padding:			5px 0;
+	}
+
+	#progress_inidicator {
+		border:				none;
+		margin-bottom:		-3px;
+	}
+
+	#number_updated {
+		margin-top:			10px;
+	}
+
+	#update_tag_counts,
+	#pause_tag_counts,
+	#resume_tag_counts {
+		cursor:				pointer;
+	}
+
+	#progress,
+	#finished_message,
+	#pause_tag_counts,
+	#resume_tag_counts {
+		display:			none;
+	}
+</style>
+<?php if ($show_update_msg):?>
+<p class="notice"><?=$lang_update_tag_count_from_upgrade_notice?></p>
+<?php endif;?>
+<p><strong><?=$lang_update_tag_count_purpose?></strong></p>
+<div id="progress">
+	<hr/>
+	<p id="current_tag_updating">
+		<img id="progress_inidicator" src="<?=$addon_theme_url?>images/indicator.gif" />
+		<?=$lang_updating_counts_for_tag_?><strong><span id="updating_tag_name"></span></strong>
+	</p>
+	<div id="progressbar"></div>
+	<div id="update_percent">0%</div>
+	<div class="clear_left"></div>	
+	<div id="number_updated">	
+		<p>
+			<?=$lang_number_of_tags_updated?>:
+			<span class="notice">
+				<span id="updates_completed">0</span>/
+				<span id="total_to_update"><?=$total_tags_count?></span>
+			</span>
+		</p>
+	</div>
+	<div id="finished_message">	
+		<p>
+			<?=$lang_tag_recounts_complete?> <strong><a href="<?=$return_uri?>"><?=$lang_return_to_tag_mcp?></a></strong>
+		</p>
+	</div>	
+</div>
+
+<button id="update_tag_counts" class="submit"><?=$lang_update_all_tag_counts?></button>
+<button id="pause_tag_counts" class="submit"><?=$lang_pause?></button>
+<button id="resume_tag_counts" class="submit"><?=$lang_resume?></button>
+<script type="text/javascript">
+	(function(global, $){
+		var tags = [
+	<?php
+		$first = TRUE; 
+		foreach ($tags as $tag_id => $tag_name):
+			if ($first) { $first = FALSE; echo "\n";} else { echo ",\n"; }?>		
+			{
+				'tagId' 	: <?=$tag_id?>,
+				'tagName'	: '<?=htmlentities($tag_name, ENT_QUOTES)?>'
+			}<?php 
+	endforeach;?>		
+		];
+
+		var totalTags 			= tags.length,
+			currentTagIndex		= 0;
+
+		function ajaxUpdateTag(index, callback)
+		{
+			$.ajax({
+				url 		: '<?=$ajax_url?>',
+				dataType	: 'JSON',
+				type 		: 'POST',
+				data 		: {tag_ids : tags[index].tagId},
+				error  		: function (jqXHR, textStatus, errorThrown){
+					
+				},
+				success		: function (data, textStatus, jqXHR)
+				{
+					callback();
+				}
+			});
+		}
+
+		//on ready
+		$(function(){
+			var $start 					= $('#update_tag_counts'),
+				$pause 					= $('#pause_tag_counts'),
+				$resume 				= $('#resume_tag_counts'),
+				$update_percent	 		= $('#update_percent'),
+				$updates_completed		= $('#updates_completed'),
+				$total_to_update		= $('#total_to_update'),
+				$updating_tag_name		= $('#updating_tag_name'),
+				$progressbar			= $('#progressbar'),
+				$progress_inidicator	= $('#progress_inidicator'),
+				runNextUpdate			= true;
+
+			//start at 0
+			$progressbar.progressbar({value: 0});
+			
+			function initiateAjaxUpdate()
+			{
+				//did someone click pause?
+				if ( ! runNextUpdate) return;
+
+				if (currentTagIndex < totalTags)
+				{
+					//update progress
+					var percent = Math.floor((currentTagIndex/totalTags) * 100);
+
+					$progressbar.progressbar({value:percent});
+					$update_percent.html(percent + '%');
+					$updates_completed.html(currentTagIndex);
+					$updating_tag_name.html(tags[currentTagIndex].tagName);
+
+					ajaxUpdateTag(currentTagIndex, arguments.callee);
+					
+					//the function's inner code is asynchronous
+					//so this should always call before an HTTP request ever finishes 
+					currentTagIndex++;
+				}
+				else
+				{
+					$progressbar.progressbar({value:100});
+					$update_percent.html(100 + '%');
+					$updates_completed.html(totalTags);
+					$('#current_tag_updating').hide();
+					$pause.hide();
+					$resume.hide();
+					$('#finished_message').show();
+				}
+			}
+
+			// -------------------------------------
+			//	start button
+			// -------------------------------------
+
+			$start.click(function(e){
+				currentTagIndex = 0;
+
+				$('#progress').show();
+				$('#current_tag_updating').show();
+				$start.hide();
+				$pause.show();
+
+				initiateAjaxUpdate();
+
+				e.preventDefault();
+				return false;
+			});
+
+			// -------------------------------------
+			//	pause and resume
+			// -------------------------------------
+
+			$pause.click(function(e){
+				runNextUpdate = false;	
+				
+				$progress_inidicator.hide();
+				$pause.hide();
+				$resume.show();
+				$updating_tag_name.html('');
+
+				e.preventDefault();
+				return false;
+			});
+
+			$resume.click(function(e){
+				runNextUpdate = true;	
+				
+				$progress_inidicator.show();
+				$pause.show();
+				$resume.hide();
+
+				initiateAjaxUpdate();
+					
+				e.preventDefault();
+				return false;
+			});
+		});
+	}(window, jQuery));
+</script>

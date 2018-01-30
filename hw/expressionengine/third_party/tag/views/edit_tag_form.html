@@ -1,0 +1,33 @@
+<form action="<?=$base_uri.AMP.'method=edit_tag';?>" method="post">
+		<input type="hidden" name="<?=$csrf_hidden_name?>"	value="<?=$CSRF_TOKEN?>" />
+		<input type='hidden' name='tag_id' value='<?=$tag_id?>' />
+
+		<table border='0'  cellspacing='0' cellpadding='0' style='width:100%;'  id="solspaceTable" class='mainTable padTable' >
+			<thead>
+				<tr>
+					<th colspan="2"><?=lang('edit_tag');?></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr class="odd">
+					<td style="width: 25%;" class="oddBold">
+						<label for="tag_name"><?=lang('tag');?></label>
+					</td>
+					<td valign="top" style="width: 75%;" class="odd">
+						<input dir='ltr' style='width:75%' type='text' name='tag_name' id='tag_name'
+							   value='<?=htmlspecialchars($tag_name, ENT_QUOTES)?>' size='35' maxlength='150' class='input'  />
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	<div class='clearfix' >&nbsp;</div>
+
+	<div class='itemWrapper'>
+		<input type="submit" name="submit" value="<?=lang('update_tag');?>" class="submit"  />
+	</div>
+
+</form>
+
+

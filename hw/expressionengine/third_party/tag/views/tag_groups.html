@@ -1,0 +1,60 @@
+<p class="notice"><?=$lang_locked_tag_group_description?></p>
+<form action="<?=$form_url?>" method="post">
+	<input type="hidden" name="<?=$csrf_hidden_name?>"	value="<?=$CSRF_TOKEN?>" />
+	<table class="mainTable padTable magicCheckboxTable"
+		   cellspacing='0'  cellpadding='0'  border='0' >
+		<thead>
+			<tr>
+				<th style="width:6%;"><?=$lang_tag_group_id?></th>
+				<th><?=$lang_tag_group_name?></th>
+				<th style="width:22%;"><?=$lang_tag_group_short_name?></th>
+				<th style="width:22%;"><?=$lang_total_tags_in_group?></th>
+				<th style="width:22%;"><?=$lang_view_group_tags?></th>
+				<th style='width:16px;'>
+					<input type="checkbox"  style="float:right; margin-right:4px;"
+							name="toggle_all_checkboxes" value="true" class="toggle_all" />
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach ($tag_groups as $data):?>
+				<tr class="<?=$this->cycle('odd', 'even')?>" >
+					<td><?=$data['tag_group_id']?></td>
+					<td>
+						<a href="<?=$data['tag_group_edit_url']?>">
+							<?=$data['tag_group_name']?>
+						</a>
+					</td>
+					<td><?=$data['tag_group_short_name']?></td>
+					<td><?=$data['total_tags']?></td>
+					<td>
+						<a href="<?=$data['view_group_tags_url']?>">
+							<?=$lang_view_tags_in_group?>
+						</a>
+					</td>
+					<td style="text-align:right;">
+						<?php if ($data['deletable']):?>
+						<input 	style="float:right; margin-right:2px;"
+								class='checkbox toggle'
+								type='checkbox'
+								name='toggle[]'
+								value='<?=$data['tag_group_id']?>'
+								id='delete_box_<?=$data['tag_group_id']?>' />
+						<?php else:?>
+							<img src="<?=$lock_img?>" />
+						<?php endif;?>
+					</td>
+				</tr>
+			<?php endforeach;?>
+
+			<tr class="<?=$this->cycle('odd', 'even')?>" >
+				<td colspan="5">
+				</td>
+				<td><input style="float:right; margin-right:2px;" class='toggle_all_checkboxes'
+						type='checkbox' name='toggle_all_checkboxes' value='' /></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div style="float:right;"><input type='submit' class='submit' value='<?=$lang_delete_tag_groups?>'  /></div>
+</form>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+Website Design by Honeyweb [ www.honeyweb.com.au ]
+ -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"> 
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<title>Best &amp; Affordable Home Loan Finance Brokers Adelaide &amp; Adelaide Hills, SA</title>
+<meta name="description" content="Adelaide Home Loans specialises in helping clients across Australia find the right financing for their needs. Contact us today for more information." />
+<meta name="keywords" content="" />
+<meta name="robots" content="index,follow,archive" />
+
+<meta name="geo.position" content="," />
+<meta name="geo.placename" content="" />
+<meta name="geo.region" content="" />
+
+ <link rel="canonical" href="http://www.adelaidehomeloans.com.au/" /> <!-- CSS -->
+<link rel="stylesheet" href="/includes/css/foundation.css" media="all" type="text/css">
+<link rel="stylesheet" href="/includes/css/app.css" media="all" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic' rel='stylesheet' type='text/css'>
+
+<style>
+html, body {
+	height: 100%;
+}
+.splash_outer {
+	height: 100%;
+	width: 100%;
+	display: table;
+}
+.splash_inner {
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+	display: table-cell;
+}
+.splash_text {
+	color: #fff;
+}
+</style>
+<!-- begin LiveChatMonitoring.com code --> 
+<script type="text/javascript"> 
+  (function() { 
+    var se = document.createElement('script'); se.type = 'text/javascript'; se.async = true; 
+    se.src = '//storage.googleapis.com/livechatmonitoring/js/5b39315b-d015-4399-b5a8-9ec58017a0f4.js'; 
+    var done = false; 
+    se.onload = se.onreadystatechange = function() { 
+      if (!done&&(!this.readyState||this.readyState==='loaded'||this.readyState==='complete')) { 
+        done = true; 
+/* Place your LiveChatMonitoring.com JS API code below */
+/* LCM.allowChatSound(true); Example JS API: Enable sounds for Visitors. */    
+/* Record chats in Google Analytics events */
+LCM.setCallback('StartChat', function(email, msg, type) {
+  if (typeof(ga) == 'function') {
+    ga('send','event','LCM', 'Chat', email);
+  } else {
+    _gaq.push(['_trackEvent', 'LCM', 'Chat', email]);
+  }
+});
+ 
+ 
+/* Record offline in Google Analytics events */
+LCM.setCallback('MessageSubmit', function(email, msg, type) {
+if (typeof(ga) == 'function') {
+ga('send','event','LCM', 'Offline', email);
+} else {
+_gaq.push(['_trackEvent', 'LCM', 'Offline', email]);
+}
+ 
+ 
+dataLayer.push({
+'event': 'LCM-offline'
+});
+ 
+ 
+});
+ 
+ 
+}
+};
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(se, s);
+})();
+</script>
+<!-- end LiveChatMonitoring.com code -->
+
+</head>
+<body>
+<!-- analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58160008-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<div class="splash_outer">
+	<div class="splash_inner">
+    	<p class="splash_logo"><img src="/img/logo.png"></p>
+        <h3 class="splash_text">Our page is currently under construction<br>Check back soon.</h3>
+    </div>
+</div>
+
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-588BTG"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-588BTG');</script>
+<!-- End Google Tag Manager -->
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?=$this->view('header.html');?>
+
+<div class='clearfix' >&nbsp;</div>
+
+<table class='mainTable padTable' id="solspaceTable" style='width:100%;'  cellspacing='0'  cellpadding='0'  border='0' >
+	<thead>
+		<tr>
+			<th><?=lang('error');?></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="odd">
+			<td>
+				<p class="defaultBold"><?=$error_message?></p>
+				<br />
+				<div class='clearfix'>
+			<strong><a href='javascript:history.go(-1)' style='text-transform:uppercase;'>&#171; <?=lang('back')?></a></strong>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<?=$this->view('footer.html'); ?>

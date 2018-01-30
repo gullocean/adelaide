@@ -1,0 +1,43 @@
+<style type="text/css">
+	#mainContent table.tagTable {
+			border-collapse: 	collapse;
+			border-spacing: 	0;
+			border-top:			1px solid #D0D7DF;
+			margin-bottom: 		0px;
+	}
+
+	table.mainTable.tagTable td {
+		padding: 				15px 10px;
+	}
+</style>
+<table class="tagTable mainTable padTable">
+	<tbody>
+		<tr class="odd">
+			<td width="50%">
+				<strong><?=$lang_tag_recount?></strong>
+			</td>
+			<td>
+				<a class="submit" href="<?=$tag_recount_url?>"><?=lang('recount')?></a>
+			</td>			
+		</tr>
+		<tr class="even">
+			<td>
+				<strong><?=$lang_harvest_tags?></strong>
+			</td>
+			<td>
+				<a class="submit" href="<?=$harvest_url?>"><?=lang('tag_harvest')?></a>
+			</td>			
+		</tr>
+		
+		<tr class="odd">
+			<td>
+				<label><?=$lang_tag_field_sync?></label>
+				<div class="subtext"><?=$lang_tag_field_sync_subtext?></div>
+			</td>
+			<td>
+				<a class="submit" href="<?=$tag_field_sync_url?>"><?=lang('tag_sync')?></a>
+			</td>			
+		</tr>
+		
+	</tbody>
+</table>

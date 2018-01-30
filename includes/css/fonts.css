@@ -1,0 +1,38 @@
+/* -----------------------------------------
+   Custom Fonts
+----------------------------------------- */
+
+/* google font
+<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic' rel='stylesheet' type='text/css'>
+font-family: 'Lato', sans-serif;
+font-weight: 300;
+font-weight: 400;
+font-weight: 700;
+
+*/
+
+@font-face {
+    font-family: 'eurostile_extendedregular';
+    src: url('../fonts/eurostileextended-roman-webfont.eot');
+    src: url('../fonts/eurostileextended-roman-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/eurostileextended-roman-webfont.woff2') format('woff2'),
+         url('../fonts/eurostileextended-roman-webfont.woff') format('woff'),
+         url('../fonts/eurostileextended-roman-webfont.ttf') format('truetype'),
+         url('../fonts/eurostileextended-roman-webfont.svg#eurostile_extendedregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'eurostile_extendedbold';
+    src: url('../fonts/eurostile_extended_black-webfont.eot');
+    src: url('../fonts/eurostile_extended_black-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/eurostile_extended_black-webfont.woff2') format('woff2'),
+         url('../fonts/eurostile_extended_black-webfont.woff') format('woff'),
+         url('../fonts/eurostile_extended_black-webfont.ttf') format('truetype'),
+         url('../fonts/eurostile_extended_black-webfont.svg#eurostile_extendedbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

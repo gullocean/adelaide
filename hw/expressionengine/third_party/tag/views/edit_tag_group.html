@@ -1,0 +1,38 @@
+<style type="text/css">
+	#edit_tag_group label{
+		width: 		115px;
+		display:	block;
+		float:		left;
+		margin-top:	3px;
+	}
+
+	#tag_group_name,
+	#tag_group_short_name {
+		width:50%;
+	}
+</style>
+<form action="<?=$form_url?>" method="post" id="edit_tag_group">
+	<input type="hidden" name="<?=$csrf_hidden_name?>"	value="<?=$CSRF_TOKEN?>" />
+	<?php if (isset($tag_group_id) AND $tag_group_id != 0):?>
+		<input type="hidden" name="tag_group_id" value="<?=$tag_group_id?>" />
+	<?php endif;?>
+
+	<p>
+		<label for="tag_group"><?=$lang_group_name?>: </label>
+		<input 	type='text'
+				name="tag_group_name"
+				id="tag_group_name"
+				maxlength="150"
+				value="<?=htmlspecialchars($tag_group_name, ENT_QUOTES)?>"/>
+	</p>
+	<p>
+		<label 	for="tag_group_short_name"><?=$lang_group_short_name?>: </label>
+		<input 	type='text'
+				name="tag_group_short_name"
+				id="tag_group_short_name"
+				maxlength="150"
+				value="<?=$tag_group_short_name?>"/>
+	</p>
+	<p style="float:right;"><input type='submit' class='submit' value='<?=$submit_lang?>'  /></p>
+	<div class="clearfix shun">&nbsp;</div>
+</form>

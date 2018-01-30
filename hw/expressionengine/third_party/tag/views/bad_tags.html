@@ -1,0 +1,52 @@
+<?php if (count($bad_tags) == 0) : ?>
+
+<p class="notice"><?=lang('no_bad_tags_found');?></p>
+
+<?php else:?>
+
+<form action="<?=$base_uri;?>&method=bad_tags_process" name='target' id='target' method='post'>
+	<input type="hidden" name="<?=$csrf_hidden_name?>"	value="<?=$CSRF_TOKEN?>" />
+
+	<table class='mainTable padTable magic_checkbox_table'
+		   style='width:100%;'  cellspacing='0'  cellpadding='0'  border='0'>
+		<thead>
+			<tr>
+				<th style='width:32%;'><?=lang('tag_name');?></th>
+				<th style='width:33%;'><?=lang('tag_added_by');?></th>
+				<th style='width:32%;'><?=lang('edit_date');?></th>
+				<th style='width:5%;'>
+					<input 	class='toggle_all'
+							style="float:right; margin-right:6px;"
+							type='checkbox' name='toggle_all_checkboxes' value='' /></th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php foreach ($bad_tags as $tag_id => $data): ?>
+			<tr class='<?=$this->cycle('odd', 'even')?>' >
+				<td><?=$data['tag_name']?></a></td>
+				<td><?=$data['screen_name']?></td>
+				<td><?=$data['edit_date']?></td>
+				<td><input 	class='checkbox toggle'
+							style="float:right; margin-right:4px;"
+							type='checkbox' name='toggle[]' value='<?=$tag_id?>' id='delete_box_<?=$tag_id?>' /></td>
+			</tr>
+		<?php endforeach;?>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td colspan="9">
+					<input 	style="float:right; margin-right:4px;"
+							class='checkbox toggle_all'
+							type='checkbox'
+							name='toggle_all_checkboxes' value='' />
+					<?=$paginate?>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div style="float:right;">
+		<input 	type='submit' class='submit'
+				name="delete_tag_button"
+				value="<?=lang('remove_bad_tags');?>"  />
+	</div>
+</form>
+<?php endif;?>

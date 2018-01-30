@@ -1,0 +1,89 @@
+<form action="<?=$form_url?>" name='target' id='target' method='post'>
+	<input type="hidden" name="<?=$csrf_hidden_name?>"	value="<?=$CSRF_TOKEN?>" />
+
+	<?php if ($tags_in_group):?>
+		<p><strong><?=$lang_viewing_tags_for_group?>: <?=$tag_group_name?></strong> <a style="float:right" href="<?=$base_uri?>"><?=$lang_view_tags_in_all_groups?></a></p>
+		<div class='clearfix'>&nbsp;</div>
+	<?php endif;?>
+
+	<?=$this->view('statistics.html', NULL, TRUE)?>
+
+	<div class='clearfix'>&nbsp;</div>
+
+	<?=$this->view('browse.html', NULL, TRUE)?>
+
+	<div class='clearfix'>&nbsp;</div>
+
+	<table  class='mainTable padTable magic_checkbox_table'
+			style='width:100%;'  cellspacing='0'  cellpadding='0'  border='0' >
+		<thead>
+			<tr>
+				<th style='width:6%; '><?=$lang_tag_id?></th>
+				<th style='width:15%;'><?=$lang_edit?></th>
+				<th style='width:12%;'><?=$lang_tag_entries?></th>
+				<th style='width:5%; '><?=$lang_count?></th>
+				<th style='width:15%;'><?=$lang_screen_name?></th>
+				<th style='width:16%;'><?=$lang_entered_date?></th>
+				<th style='width:16%;'><?=$lang_edit_date?></th>
+				<th style='width:11%;'><?=$lang_bad_tag?></th>
+				<th style='width:4%; '>
+					<input type="checkbox"  style="float:right; margin-right:6px;"
+							name="toggle_all_checkboxes" value="true" class="toggle_all" />
+				</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<?php if (count($tags) == 0) : ?>
+				<tr class='odd' >
+					<td colspan="9"><strong><?=$lang_no_tags_found?></strong></td>
+				</tr>
+			<?php endif;?>
+
+			<?php foreach ($tags as $tag_id => $data) : ?>
+				<tr class='<?=$this->cycle('odd', 'even')?>'>
+					<td><?=$tag_id?></td>
+					<td><a href='<?=$data['edit_tag_url']?>'
+						   title="<?=$lang_edit_tag?> <?=$data['tag_name']?>"><?=$data['tag_name']?></a></td>
+					<td><a href='<?=$data['view_entries_url']?>'
+							title="<?=$lang_edit_entries_for_?><?=$data['tag_name']?>"><?=$lang_tag_view_entries?></a></td>
+					<td><?=$data['channel_entries_count']?></td>
+					<td><?=$data['screen_name']?></td>
+					<td><?=$data['formatted_entry_date']?></td>
+					<td><?=$data['formatted_edit_date']?></td>
+
+					<?php if (in_array($data['tag_name'], $bad_tags)) : ?>
+						<td><?=$lang_bad_tag?></td>
+					<?php else : ?>
+						<td><a href='<?=$data['bad_tag_url']?>'
+							   title="<?=$lang_tag_mark_as_bad_?><?=$data['tag_name']?>"><?=$lang_add_bad_tag?></a></td>
+					<?php endif;?>
+					<td ><input
+								style="float:right; margin-right:4px;"
+								class='checkbox toggle'
+								type='checkbox'
+								name='toggle[]'
+								value='<?=$tag_id?>'
+								id='delete_box_<?=$tag_id?>' /></td>
+				</tr>
+			<?php endforeach;?>
+			<?php if (count($tags) > 0) : ?>
+				<tr class="<?=$this->cycle('odd', 'even')?>" >
+					<td colspan="8">
+						<?=$paginate?>
+					</td>
+					<td><input style="float:right; margin-right:4px;" class='toggle_all_checkboxes'
+							type='checkbox' name='toggle_all_checkboxes' value='' /></td>
+				</tr>
+			<?php endif;?>
+		</tbody>
+	</table>
+
+	<p style="float:right;">
+		<input type='submit' class='submit'
+		name="delete_tag_button" value="<?=$lang_delete?>"  />
+	</p>
+
+	<div class='clearfix shun'>&nbsp;</div>
+
+</form>

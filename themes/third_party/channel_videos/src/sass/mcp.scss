@@ -1,0 +1,164 @@
+$experimental-support-for-opera:false;
+$experimental-support-for-khtml:false;
+$experimental-support-for-microsoft : true !default;
+@import "compass/css3";
+
+#mainWrapper {
+    #mainContent {
+        .pageContents {
+            padding:0;
+            border-top:0;
+        }
+    }
+}
+
+// Top Menu
+#umenu {
+    background-color: #c8d2d7;
+    @include background-image(linear-gradient(top, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%));
+    overflow:auto;
+    padding:3px 3px 6px 17px;
+    box-shadow:rgba(255, 255, 255, 0.5) 0 1px 0 0 inset;
+
+    li {
+        float:left;
+        margin:0;
+        padding:2px;
+        a {
+            background:#ABB7C3;
+            color:#fff;
+            font-size:11px;
+            font-weight:bold;
+            margin:3px 7px 0 0;
+            padding:5px 10px 5px 10px;
+            display:block;
+            text-decoration:none;
+            text-transform:uppercase;
+            border-radius:5px;
+        }
+    }
+
+    li.current a, li a:hover {
+        color:#fff;
+        font-weight:bold;
+        background:#27343C;
+        text-shadow:0 -1px 0 rgba(0, 0, 0, 0.2);
+        box-shadow:rgba(0, 0, 0, 0.2) 0 1px 0 0 inset;
+    }
+}
+
+#fbody {
+    background:#ECF1F4;
+    border:1px solid rgba(0, 0, 0, 0.2);
+    border-bottom-color: rgba(0, 0, 0, 0.4);
+    box-shadow: rgba(0, 0, 0, 0.05) 0 3px 5px 0;
+
+    .btitle {
+        padding:7px 15px 7px 10px;
+        background:#fff;
+        border-bottom:1px solid #ddd;
+
+        h2 {
+            color:#222;
+            display:inline-block;
+            font-size:15pt;
+            font-weight:300;
+            margin:0 15px 0 0;
+            text-shadow:0 1px 0 #FFF;
+        }
+
+        .abtn.enabled {
+            cursor:pointer;
+            opacity:1;
+            filter:alpha(opacity=100);
+        }
+    }
+}
+
+.DDTable {
+    background:#ECF1F4;
+    border:1px solid #ccc;
+    border:1px solid rgba(0, 0, 0, 0.2);
+    border-bottom-color:rgba(0, 0, 0, 0.4);
+    margin-bottom:18px;
+    margin-top:9px;
+    box-shadow:rgba(0, 0, 0, 0.05) 0 3px 5px 0;
+
+    h2 {
+        background:#fff;
+        border-bottom:1px solid rgba(0, 0, 0, 0.2);
+        color:#37444D;
+        margin:0;
+        padding:9px;
+        font-size:16px;
+    }
+
+    table {
+        border-spacing:0;
+        border-collapse:collapse;
+        margin:-1px 0 0 0 !important;
+        border-bottom:1px solid #c5ced4;
+        width:100%;
+
+        thead {
+            background:#9aa9b3;
+            @include background-image(linear-gradient(top, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%));
+            color:#fff;
+            font-size:12px;
+
+            th {
+                border-right:1px solid #849099;
+                border-top:1px solid #849099;
+                border-bottom:1px solid #849099;
+                font-weight:normal;
+                text-shadow:rgba(0, 0, 0, 0.5) 0 -1px 0;
+
+                small {
+                    font-weight:normal;
+                }
+            }
+        }
+
+
+        td,th {
+            border-color:#c5ced4;
+            border-width:1px 1px 0 0;
+            border-style:solid;
+            border-right-style:dotted;
+            padding:7px 9px;
+            text-align:left;
+        }
+
+        th {
+            small {
+                font-weight:normal;
+            }
+        }
+
+        th:last-child, td:last-child {
+            border-right:none;
+        }
+
+        tr.odd {
+            background-color:#F6F8FA;
+        }
+
+        tr.odds {
+            background-color:#F6F8FA !important;
+        }
+
+        .flabel {
+            font-size:12px;
+            width:200px;
+        }
+    }
+
+    table.hasrowspan tr.odd {
+        background:none;
+    }
+
+    .subhead {
+        font-weight:normal;
+        width:200px;
+    }
+}

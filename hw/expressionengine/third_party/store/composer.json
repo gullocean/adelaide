@@ -1,0 +1,22 @@
+{
+    "autoload": {
+        "psr-0": {
+            "Store": "src/"
+        },
+        "files": ["src/helper.php"]
+    },
+    "require": {
+        "dompdf/dompdf": "~0.6.0",
+        "expressodev/laravel-codeigniter-db": "dev-master",
+        "guzzle/http": "~3.7.0",
+        "guzzle/plugin-cache": "~3.7.0",
+        "illuminate/database": "~4.1.0",
+        "nesbot/Carbon": "1.*",
+        "omnipay/omnipay": "2.*"
+    },
+    "require-dev": {
+        "guzzle/plugin-mock": "~3.7.0",
+        "mockery/mockery": "~0.9",
+        "phpunit/phpunit": "3.7.*"
+    }
+}

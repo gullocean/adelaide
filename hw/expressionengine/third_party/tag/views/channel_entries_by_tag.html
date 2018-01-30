@@ -1,0 +1,53 @@
+<form>
+
+<h3><?php echo str_replace('%tag_name%', $tag_name, lang('channel_entries_by_tag_name'));?></h3>
+
+	<table class='mainTable padTable'  style='width:100%;' cellspacing='0'  cellpadding='0'  border='0' >
+		<thead>
+			<tr>
+				<th style='width:10%;'><?=lang('entry_id');?></th>
+				<th style='width:30%;'><?=lang('entry_title');?></th>
+				<th style='width:30%;'><?=lang('screen_name');?></th>
+				<th style='width:30%;'><?=lang('entry_date');?></th>
+			</tr>
+		</thead>
+
+		<tbody>
+
+			<?php if (count($entries) == 0) : ?>
+
+				<tr>
+					<td class='odd' colspan="4"><?=lang('no_entries_found');?></td>
+				</tr>
+
+			<?php endif; ?>
+
+
+			<?php foreach ($entries as $entry_id => $data) : ?>
+				<?php $class = $caller->cycle('odd', 'even');?>
+				<tr class='<?=$class;?>'>
+					<td ><?=$entry_id;?></td>
+					<td class='<?=$class;?>' >
+						<a href='<?php echo BASE;?>&C=content_publish&M=entry_form&channel_id=<?=$data['channel_id'];?>&amp;entry_id=<?=$entry_id;?>' title="<?=$caller->output($data['title']);?>"><?=$data['title'];?></a>
+					</td>
+					<td class='<?=$class;?>' ><?=$data['screen_name'];?></td>
+					<td class='<?=$class;?>' ><?=$data['entry_date']?></td>
+				</tr>
+			<?php endforeach;?>
+		</tbody>
+
+		<?php if ($paginate != '') : ?>
+			<?php $class = $caller->cycle('odd', 'even');?>
+			<tfoot>
+				<tr>
+					<td class="<?=$class;?>" colspan="4"><?=$paginate;?></td>
+				</tr>
+			</tfoot>
+		<?php endif;?>
+
+	</table>
+
+	<div class='clearfix' >&nbsp;</div>
+
+</form>
+

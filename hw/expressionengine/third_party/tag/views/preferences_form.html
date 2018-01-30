@@ -1,0 +1,280 @@
+<form action="<?=$form_url?>" method="post">
+	<input type="hidden" name="<?=$csrf_hidden_name?>"	value="<?=$CSRF_TOKEN?>" />
+
+<?php
+	$count = 0;
+	foreach($sites as $site_id => $site_label):
+		$count++; ?>
+	<table 	class="mainTable padTable siteTable"
+			style='width:100%; <?php if ($site_id != $current_site_id){
+				echo 'display:none;';
+			}?>'
+			id="site_table_<?=$site_id?>"
+			data-site-id="<?=$site_id?>"
+			cellspacing='0' cellpadding='0' border='0' autocomplete="off">
+		<thead>
+			<tr>
+				<th colspan="2">
+					<?=lang('site_preferences_for_')?>:
+					<?php if (ee()->config->item('multiple_sites_enabled') == 'y') : ?>
+					<select data-site-id="<?=$site_id?>"
+							class="siteSwitcher" name="site">
+						<?php foreach($sites as $s_site_id => $s_site_label): ?>
+							<option value='<?=$s_site_id?>'
+								<?php echo (($s_site_id == $site_id) ?
+										"selected='selected'" : "");?> >
+								<?=$s_site_label?>
+							</option>
+						<?php endforeach; ?>
+					</select>
+					<?php else:?>
+						<?=$current_site_label?>
+					<?php endif;?>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td style="width: 50%;">
+					<label for="<?=$site_id?>_separator">
+						<?=lang('tag_module_separator')?>
+					</label>
+					<div class="subtext">
+						<?=lang('tag_module_separator_subtext')?>
+					</div>
+				</td>
+				<td style="width: 50%;">
+					<select class="select" name="<?=$site_id?>_separator">
+						<?php foreach($separators as $separator): ?>
+							<option value="<?=$separator?>"
+								<?php echo (($separator == $form_fields[$site_id]['separator']) ?
+								"selected='selected'" : "");?>><?=$separator?>
+							</option>
+						<?php endforeach;?>
+					</select>
+				</td>
+			</tr>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="<?=$site_id?>_convert_case">
+						<?=lang('tag_module_convert_case')?>
+					</label>
+				</td>
+				<td>
+					<label><?=lang('yes')?></label>
+					<input
+						type="radio" id="<?=$site_id?>_convert_case"
+						name="<?=$site_id?>_convert_case" value="y"
+						<?php echo (($form_fields[$site_id]['convert_case'] == "y") ?
+								"checked='checked'" : "");?> />
+					&nbsp;
+					<label><?=lang('no')?></label>
+					<input  class="radio"
+						type="radio" id="<?=$site_id?>_convert_case"
+						name="<?=$site_id?>_convert_case" value="n"
+						<?php echo (($form_fields[$site_id]['convert_case'] == "n") ?
+								"checked='checked'" : "");?> />
+				</td>
+			</tr>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="<?=$site_id?>_enable_tag_form">
+						<?=lang('tag_module_enable_tag_form')?>
+					</label>
+				</td>
+				<td>
+					<label><?=lang('yes')?></label>
+					<input class="radio"
+						type="radio" id="<?=$site_id?>_enable_tag_form"
+						name="<?=$site_id?>_enable_tag_form" value="y"
+						<?php echo (($form_fields[$site_id]['enable_tag_form'] == "y") ?
+								"checked='checked'" : "");?> />
+					&nbsp;
+					<label><?=lang('no')?></label>
+					<input  class="radio"
+						type="radio" id="<?=$site_id?>_enable_tag_form"
+						name="<?=$site_id?>_enable_tag_form" value="n"
+						<?php echo (($form_fields[$site_id]['enable_tag_form'] == "n") ?
+								"checked='checked'" : "");?> />
+				</td>
+			</tr>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="<?=$site_id?>_allow_tag_creation_publish">
+						<?=lang('tag_module_allow_tag_creation_publish')?>
+					</label>
+					<div class="subtext">
+						<?=lang('tag_module_allow_tag_creation_publish_subtext')?>
+					</div>
+				</td>
+				<td>
+					<label><?=lang('yes')?></label>
+					<input  class="radio"
+						type="radio" id="<?=$site_id?>_allow_tag_creation_publish"
+						name="<?=$site_id?>_allow_tag_creation_publish" value="y"
+						<?php echo (($form_fields[$site_id]['allow_tag_creation_publish'] == "y") ?
+								"checked='checked'" : "");?> />
+					&nbsp;
+					<label><?=lang('no')?></label>
+					<input  class="radio"
+						type="radio" id="<?=$site_id?>_allow_tag_creation_publish"
+						name="<?=$site_id?>_allow_tag_creation_publish" value="n"
+						<?php echo (($form_fields[$site_id]['allow_tag_creation_publish'] == "n") ?
+								"checked='checked'" : "");?> />
+				</td>
+			</tr>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="<?=$site_id?>_explode_input_on_separator">
+						<?=lang('explode_input_on_separator')?>
+					</label>
+					<div class="subtext">
+						<?=lang('explode_input_on_separator_subtext')?>
+					</div>
+				</td>
+				<td>
+					<label><?=lang('yes')?></label>
+					<input  class="radio"
+						type="radio" id="<?=$site_id?>_explode_input_on_separator"
+						name="<?=$site_id?>_explode_input_on_separator" value="y"
+						<?php echo (
+							($form_fields[$site_id]['explode_input_on_separator'] == "y") ?
+								"checked='checked'" : ""
+						);?> />
+					&nbsp;
+					<label><?=lang('no')?></label>
+					<input  class="radio"
+						type="radio" id="<?=$site_id?>_explode_input_on_separator"
+						name="<?=$site_id?>_explode_input_on_separator" value="n"
+						<?php echo (
+							($form_fields[$site_id]['explode_input_on_separator'] != "y") ?
+								"checked='checked'" : ""
+						);?> />
+				</td>
+			</tr>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="<?=$site_id?>_enable_explode_controls">
+						<?=lang('enable_explode_controls')?>
+					</label>
+					<div class="subtext">
+						<?=lang('enable_explode_controls_subtext')?>
+					</div>
+				</td>
+				<td>
+					<label><?=lang('yes')?></label>
+					<input  class="radio"
+						type="radio" id="<?=$site_id?>_enable_explode_controls"
+						name="<?=$site_id?>_enable_explode_controls" value="y"
+						<?php echo (
+							($form_fields[$site_id]['enable_explode_controls'] == "y") ?
+								"checked='checked'" : ""
+						);?> />
+					&nbsp;
+					<label><?=lang('no')?></label>
+					<input  class="radio"
+						type="radio" id="<?=$site_id?>_enable_explode_controls"
+						name="<?=$site_id?>_enable_explode_controls" value="n"
+						<?php echo (
+							($form_fields[$site_id]['enable_explode_controls'] != "y") ?
+								"checked='checked'" : ""
+						);?> />
+				</td>
+			</tr>
+			<tr class="<?=$this->cycle('odd', 'even')?>">
+				<td>
+					<label for="<?=$site_id?>_publish_entry_tag_limit">
+						<?=lang('tag_module_publish_entry_tag_limit')?>
+					</label>
+				</td>
+				<td>
+					<input
+						type="text" id="<?=$site_id?>_publish_entry_tag_limit"
+						name="<?=$site_id?>_publish_entry_tag_limit"
+						value="<?=$form_fields[$site_id]['publish_entry_tag_limit']?>"
+						maxlength="5"
+						style="width:50%;"/>
+					&nbsp;
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<?php
+		$subcount = 0;
+		foreach($channels[$site_id] as $channel_id => $channel_title):
+			if ($site_id == $current_site_id){ $subcount++; }?>
+		<table	class="mainTable padTable channelTable"
+				style='width:100%; <?php if ($site_id != $current_site_id OR
+											 $subcount > 1){ echo 'display:none;'; }?>'
+				id="channel_table_<?=$site_id?>_<?=$channel_id?>"
+				data-site-id="<?=$site_id?>"
+				cellspacing='0' cellpadding='0' border='0' autocomplete="off">
+			<thead>
+				<tr>
+					<th colspan="2">
+						<?=$site_label?> <?=lang('channel_preferences_for_')?>:
+						<select data-site-id="<?=$site_id?>"
+								data-channel-id="<?=$channel_id?>"
+								class="channelSwitcher" name="channel">
+							<?php foreach($channels[$site_id] as $c_channel_id => $c_channel_title): ?>
+								<option value='<?=$c_channel_id?>'>
+									<?=$c_channel_title?>
+								</option>
+							<?php endforeach; ?>
+						</select>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="<?=$this->cycle('odd', 'even')?>">
+					<td style="width: 50%;">
+						<label for="<?=$channel_id?>_publish_tab_label">
+							<?=lang('publish_tab_label_for_')?>: <?=$channel_title?>
+						</label>
+						<div class="subtext">
+							<?=lang('publish_tab_label_subtext')?>
+						</div>
+						<div class="subtext notice"><?=lang('publish_tab_label_deprecated')?></div>
+					</td>
+					<td style="width: 50%;">
+						<input
+							type="text" id="<?=$channel_id?>_publish_tab_label"
+							name="<?=$channel_id?>_publish_tab_label"
+							value="<?=$channel_form_fields[$channel_id]['publish_tab_label']?>"
+							style="width:50%;"/>
+						&nbsp;
+					</td>
+				</tr>
+				<tr class="<?=$this->cycle('odd', 'even')?>">
+					<td>
+						<label for="<?=$channel_id?>_tag_field">
+							<?=lang('tag_harvest_field_for_')?>: <?=$channel_title?>
+						</label>
+						<div class="subtext">
+							<?=lang('tag_harvest_field_subtext')?>
+						</div>
+					</td>
+					<td>
+						<select class="select" name="<?=$channel_id?>_tag_field">
+							<?php foreach($channel_form_fields[$channel_id]['fields'] as
+																$field_id => $field_label): ?>
+								<option value="<?=$field_id?>"
+									<?php echo (($field_id == $channel_form_fields[$channel_id]['tag_field']) ?
+									"selected='selected'" : "");?>><?=$field_label?>
+								</option>
+							<?php endforeach;?>
+						</select>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+
+	<?php endforeach; ?>
+<?php endforeach; ?>
+
+
+	<p><input style="float:right;"
+			type="submit" name="submit"
+			value="<?=lang('update');?>" class="submit"  /></p>
+</form>

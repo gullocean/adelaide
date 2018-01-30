@@ -1,0 +1,335 @@
+.solspace_tag_group {
+	margin-top:		10px;
+	line-height:	14px;
+}
+
+	.solspace_tag_group .tag_error_dialog {
+		display:		none;
+		margin: 		5px 0 0 0;
+		position: 		absolute;
+	}
+
+	.solspace_tag_group .tag_note {
+		margin: 		0 0 10px 0;
+	}
+
+		.solspace_tag_group .tag_note label {
+			display:inline;
+			font-weight:bold;
+			font-size: 94%;
+		}
+
+		.solspace_tag_group .tag_note_contents {
+			margin-right:5px;
+		}
+
+		.solspace_tag_group .tag_note_contents.disabled,
+		.solspace_tag_group .tag_note_contents.disabled label {
+			color: #aaa;
+		}
+
+/*----------------------
+	current tags
+-----------------------*/
+.solspace_tag_group .white_grad {
+	/* background not added here as it's fubar with IE :/. Stupid IE */
+		background-color: 		#ffffff;
+		background-image: 		-webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ededed)); /* Saf4+, Chrome */
+		background-image: 		-webkit-linear-gradient(top, #ffffff, #ededed); /* Chrome 10+, Saf5.1+ */
+		background-image: 		   -moz-linear-gradient(top, #ffffff, #ededed); /* FF3.6 */
+		background-image: 		    -ms-linear-gradient(top, #ffffff, #ededed); /* IE10 */
+		background-image: 		     -o-linear-gradient(top, #ffffff, #ededed); /* Opera 11.10+ */
+		background-image: 		        linear-gradient(top, #ffffff, #ededed);
+
+}
+	.solspace_tag_group.ie8 .white_grad {
+		filter: 				progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#ededed'); /* IE6–IE9 */
+	}
+
+	/*ie9 is so coool! i needs its own special fix because it doesnt support css3
+	 gradients, and it doesn't round filter effects when corners are rounded ;D!!!!
+	 stupid stupid ie >:|*/
+	.solspace_tag_group.ie9 .white_grad {
+		background-image: 		url(../images/stupid_ie9.svg);
+		background-size: 		100% 100%;
+		background-repeat: 		repeat-x;
+		background-position:	0 0;
+	}
+
+/*----------------------
+	current tags
+-----------------------*/
+
+.solspace_tag_group .current_tag,
+.solspace_tag_group .top_tag,
+.solspace_tag_group .suggest_tag {
+	display:				inline;
+	zoom:					1;
+	float:					left;
+	font-weight:			bold;
+	height:					16px;
+	margin:					0 5px 5px 0;
+	padding:				3px 7px 1px 7px;
+	-moz-border-radius: 	5px;
+	-webkit-border-radius: 	5px;
+	border-radius: 			5px;
+}
+
+.solspace_tag_group .current_tag {
+	border: 				1px solid #a4a4a4;
+}
+
+.solspace_tag_group .suggest_tag {
+	border: 				1px solid #cfcfcf;
+	color:					#7d7d7d;
+	cursor:					pointer;
+}
+
+.solspace_tag_group .top_tag {
+	border: 				1px solid #cfcfcf;
+	color:					#7d7d7d;
+	cursor:					pointer;
+}
+
+	.solspace_tag_group .top_tag.used {
+		border: 				1px solid #cfcfcf;
+		color:					#b9b9b9;
+		cursor:					default;
+	}
+
+	.solspace_tag_group .top_tag .tag_count {
+		background: 			#aaa;
+		-moz-border-radius: 	3px;
+		-webkit-border-radius: 	3px;
+		border-radius: 			3px;
+		color: 					#fff;
+		float: 					right;
+		font-size: 				11px;
+		line-height:			13px;
+		margin: 				0px -3px 0 8px;
+		padding: 				1px 4px 0 4px;
+	}
+
+	/*i have no idea why these look different but they do ಠ_ಠ */
+	.solspace_tag_group.ie8 .top_tag .tag_count {
+		line-height:	12px;
+		padding: 				1px 4px 1px 4px
+	}
+
+.solspace_tag_group .solspace_tag_current_tags {
+	margin-top:					10px;
+}
+
+.solspace_tag_group .solspace_tag_input_area {
+	margin-bottom:			10px;
+}
+
+.solspace_tag_group .tag_input {
+	width:					400px;
+	margin-right:			10px;
+	display:				block;
+	float:					left;
+}
+
+.solspace_tag_group .solspace_tag_top_tags,
+.solspace_tag_group .solspace_tag_suggest_tags {
+	border-top:				1px solid #D1D5DE;
+	margin-top:				5px;
+	padding:				10px 0 0 0;
+	display:				none;
+}
+
+
+.solspace_tag_group .solspace_tag_new_tags .tag_section_name {
+	display:				none;
+}
+
+.solspace_tag_group .tag_section_name {
+	display:				block;
+	color:					#898989;
+	float:					left;
+	font-size:				101%;
+	font-weight:			bold;
+	margin-bottom:			10px;
+	padding:				2px 20px 0 0;
+	width:					11%;
+}
+
+	/*this dirty trick helps how things break when the screen gets too small*/
+	.solspace_tag_group .tag_section_name .staticwrap {
+		width:					105px;
+		padding-top:			2px;
+	}
+
+.solspace_tag_group .tag_section_data {
+	float:					left;
+	width:					80%;
+}
+
+/*----------------------
+	buttons
+-----------------------*/
+
+.solspace_tag_group .suggest_tags,
+.solspace_tag_group .top_tags,
+.solspace_tag_group .refresh_suggest_tags {
+	border: 				1px solid #cfcfcf;
+	color:					#898989;
+	cursor:					pointer;
+	display:				block;
+	float:					left;
+	font-size:				101%;
+	font-weight:			bold;
+	margin:					0px 5px 0 0;
+	padding:				4px 8px 2px 8px;
+	text-align:				right;
+	-moz-border-radius: 	5px;
+	-webkit-border-radius: 	5px;
+	border-radius: 			5px;
+}
+
+.solspace_tag_group .suggest_tags,
+.solspace_tag_group .top_tags {
+	height:	16px;
+}
+
+	.solspace_tag_group.ie8 .suggest_tags,
+	.solspace_tag_group.ie8 .top_tags{
+		padding:				4px 8px 2px;
+	}
+
+.solspace_tag_group .refresh_suggest_tags {
+	float:					left;
+	padding:				3px 5px;
+	margin-top:				0;
+}
+
+.solspace_tag_group .glass {
+	background: 			transparent url('../images/tag_assets.png') -10px -39px no-repeat ;
+	display: 				block;
+	float:					left;
+	height: 				14px;
+	margin:					0px 9px 1px 1px;
+	width: 					13px;
+}
+
+	.solspace_tag_group.ie8 .glass {
+		margin:					0px 9px 2px 1px;
+	}
+
+.solspace_tag_group .star {
+	background: 			transparent url('../images/tag_assets.png') -10px -65px no-repeat ;
+	display: 				block;
+	float:					left;
+	height: 				16px;
+	margin:					-2px 8px 1px 0;
+	width: 					16px;
+}
+
+	.solspace_tag_group.ie8 .star {
+		margin:					-2px 8px 2px 0;
+	}
+
+.solspace_tag_group .add {
+	background: 			transparent url('../images/tag_assets.png') -10px -10px no-repeat ;
+	display: 				block;
+	float:					left;
+	height: 				16px;
+	margin:					-2px 8px 0 0;
+	width: 					16px;
+}
+
+.solspace_tag_group .refresh {
+	background: 			transparent url('../images/tag_assets.png') -10px -93px no-repeat ;
+	display: 				block;
+	float:					left;
+	height: 				14px;
+	width: 					14px;
+}
+
+.solspace_tag_group .loading {
+	background: 			transparent url('../images/indicator.gif') top left no-repeat;
+	display: 				none;
+	float:					left;
+	height: 				16px;
+	width: 					16px;
+	margin:					-1px;
+}
+
+.solspace_tag_group .plus,
+.solspace_tag_group .ex {
+	background: 			transparent url('../images/tag_assets.png') no-repeat ;
+	cursor:					pointer;
+	display: 				block;
+	height: 				16px;
+	width: 					16px;
+}
+
+.solspace_tag_group .plus {
+	background-position:	-5px -148px;
+	float:					left;
+	margin:					-1px 4px 0 -3px;
+}
+
+.solspace_tag_group .ex {
+	background-position:	-5px -120px;
+	float:					right;
+	margin:					-1px -3px 0 3px;
+}
+
+/* autocomplete css*/
+
+.tag_ac_results {
+	padding: 0px;
+	border: 1px solid black;
+	background-color: white;
+	overflow: hidden;
+	z-index: 99999;
+}
+
+.tag_ac_results ul {
+	width: 100%;
+	list-style-position: outside;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.tag_ac_results li {
+	margin: 0px;
+	padding: 2px 5px;
+	cursor: default;
+	display: block;
+	/*
+	if width will be 100% horizontal scrollbar will apear
+	when scroll mode will be used
+	*/
+	/*width: 100%;*/
+	font: menu;
+	font-size: 12px;
+	/*
+	it is very important, if line-height not setted or setted
+	in relative units scroll will be broken in firefox
+	*/
+	line-height: 16px;
+	overflow: hidden;
+}
+
+.tag_ac_loading {
+	background: white url('../images/indicator.gif') right center no-repeat;
+}
+
+.tag_ac_odd {
+	background-color: #eee;
+}
+
+.tag_ac_over {
+	background-color: #555;
+	color: #fff;
+}
+
+
+/* yes we have our own, but its because this can be used on the front end as well */
+.tag_clear {
+	clear:both;
+}

@@ -1,0 +1,61 @@
+/**
+ * Campaigner control panel styles.
+ *
+ * @author      : Stephen Lewis <addons@experienceinternet.co.uk>
+ * @copyright   : Experience Internet
+ * @package     : Campaigner
+ */
+
+@media screen, projection {
+  
+/* =stacked
+ -------------------------------------------------------------*/
+#campaigner .stacked label {
+  display         : block;
+  font-weight     : normal;
+  margin-bottom   : 0.5em;
+}
+
+#campaigner .stacked label span {
+  display         : inline-block;
+  margin-right    : 10px;
+  width           : 35%;
+}
+
+#campaigner .stacked select {
+  display         : inline-block;
+}
+
+
+/* =campaigner_custom_fields
+ * ------------------------------------------------------------ */
+.campaigner_custom_fields {
+  display         : none;
+}
+
+
+/* =campaigner_loading
+ * ------------------------------------------------------------ */
+.campaigner_loading {
+  color           : rgba(0, 0, 0, 0.5);
+  display         : inline-block;
+  font-weight     : bold;
+  padding-left    : 22px;
+  text-shadow     : 0 1px 0 rgb(255, 255, 255);
+}
+
+
+/* =campaigner_modal_loading
+ -------------------------------------------------------------*/
+#campaigner_modal_loading {
+  background      : rgba(0, 0, 0, 0.85);
+  display         : none;
+  position        : absolute;
+}
+
+
+}
+
+
+/* End of file    : cp.css */
+/* File location  : themes/third_party/campaigner/css/cp.css */

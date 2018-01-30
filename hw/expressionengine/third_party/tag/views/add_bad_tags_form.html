@@ -1,0 +1,25 @@
+<form action="<?=$base_uri;?>&method=add_bad_tags" name='target' id='target' method='post'>
+	<input type="hidden" name="<?=$csrf_hidden_name?>"	value="<?=$CSRF_TOKEN?>" />
+	<table class='mainTable padTable'  style='width:100%;'  cellspacing='0'  cellpadding='0'  border='0' >
+		<thead>
+			<tr>
+				<th colspan="2"><?=lang('add_bad_tags');?></td>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td class='odd' style="vertical-align: top; width:30%;">
+					<label for="tag_name" class="defaultBold"><?=lang('tags');?></label>
+					<div class="subtext"><?=lang('add_bad_tags_instructions');?></div>
+				</td>
+				<td class='odd' >
+					<textarea  dir='ltr'  style='width:70%;' name='tag_name' id='tag_name' cols='90' rows='10' class='textarea' ></textarea>
+				</td>
+			</tr>
+		</tbody>
+
+	</table>
+
+	<input type='submit' class='submit' name="add_bad_tag_button" value="<?=lang('add_bad_tags');?>"  />
+</form>

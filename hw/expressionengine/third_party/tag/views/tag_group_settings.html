@@ -1,0 +1,80 @@
+<script type="text/javascript">
+	(function($, global){
+		function shortName(a){var b="",c="_",f="",d={"223":"ss","224":"a","225":"a","226":"a","229":"a","227":"ae","230":"ae","228":"ae","231":"c","232":"e","233":"e","234":"e","235":"e","236":"i","237":"i","238":"i","239":"i","241":"n","242":"o","243":"o","244":"o","245":"o","246":"oe","249":"u","250":"u","251":"u","252":"ue","255":"y","257":"aa","269":"ch","275":"ee","291":"gj","299":"ii","311":"kj","316":"lj","326":"nj","353":"sh","363":"uu","382":"zh","256":"aa","268":"ch","274":"ee","290":"gj","298":"ii","310":"kj","315":"lj","325":"nj","352":"sh","362":"uu","381":"zh"};if(b!="")if(a.substr(0,b.length)==b)a=a.substr(b.length);a=a.toLowerCase();b=0;for(var g=a.length;b<g;b++){var e=a.charCodeAt(b);if(e>=32&&e<128)f+=a.charAt(b);else if(d.hasOwnProperty(e))f+=d[e]}d=new RegExp(c+"{2,}","g");a=f;a=a.replace("/<(.*?)>/g","");a=a.replace(/\s+/g,c);a=a.replace(/\//g,c);a=a.replace(/[^a-z0-9\-\._]/g,"");a=a.replace(/\+/g,c);a=a.replace(d,c);a=a.replace(/-$/g,"");a=a.replace(/_$/g,"");a=a.replace(/^_/g,"");a=a.replace(/^-/g,"");return a=a.replace(/\.+$/g,"")};
+		
+		$(function(){
+			$('#<?=$id_wrapper?> .new_group_link').click(function(e){
+				$('#<?=$id_wrapper?> .tag_group_select').hide();
+				$('#<?=$id_wrapper?> .insert_new_tag_holder').show();
+				$(this).hide();
+
+				e.preventDefault();
+				return false;
+			});
+
+			$('#<?=$id_wrapper?> .cancel_new_group_link').click(function(e){
+				$('#<?=$id_wrapper?> .tag_group_select').show();
+				$('#<?=$id_wrapper?> .insert_new_tag_holder').hide();
+				$('#<?=$id_wrapper?> .new_group_link').show();
+				$('#<?=$id_wrapper?> .new_tag_group_name').val('');
+				$('#<?=$id_wrapper?> .new_tag_group_short_name').val('');				
+
+				e.preventDefault();
+				return false;
+			});
+			
+			var $new_tag_group_short_name 	= $('#<?=$id_wrapper?> .new_tag_group_short_name'),
+				$new_tag_group_name			= $('#<?=$id_wrapper?> .new_tag_group_name');
+			
+			$new_tag_group_name.keyup(function(e) {
+				$new_tag_group_short_name.val(shortName($new_tag_group_name.val()));
+			});
+		});
+	}(jQuery, window));
+</script>
+
+<style type="text/css">
+	#<?=$id_wrapper?> .insert_new_tag_holder {
+		display:	none;
+	}
+	
+	#<?=$id_wrapper?> .insert_new_tag_holder label{
+		width: 		115px;
+		display:	block;
+		float:		left;
+		margin-top:	3px;
+	}
+	
+	#<?=$id_wrapper?> .cancel_new_group_link,
+	#<?=$id_wrapper?> .new_group_link {
+		float:		right;
+	}
+	#<?=$id_wrapper?> .new_tag_group_name,
+	#<?=$id_wrapper?> .new_tag_group_short_name {
+		width:50%;
+	}
+	
+	
+	button {
+		cursor:pointer;
+	}
+</style>
+<div id="<?=$id_wrapper?>">
+<select class="tag_group_select" name="tag_group">
+	<?php foreach($tag_groups as $group_id => $group_name):?>
+	<option <?php if ($group_id == $current_group_id) { 
+		echo 'selected="selected"'; 
+		}?> value="<?=$group_id?>"><?=$group_name?></option>
+	<?php endforeach;?>
+</select>
+
+<button class="submit new_group_link"><?=$lang_insert_new_tag_group?></button>
+
+<span class="insert_new_tag_holder">
+	<button class="submit cancel_new_group_link"><?=$lang_cancel?></button>
+	<p><label><?=$lang_new_group_name?>: </label>
+	<input type='text' name="new_tag_group_name" class="new_tag_group_name" maxlength="150" /></p>
+	<p style="margin-bottom:5px"><label><?=$lang_short_name?>: </label>
+	<input type='text' name="new_tag_group_short_name" class="new_tag_group_short_name" maxlength="150" disabled="disabled"/></p>
+</span>
+</div>

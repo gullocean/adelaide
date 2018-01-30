@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /hw/
+Sitemap: http://www.adelaidehomeloans.com.au/sitemap.xml

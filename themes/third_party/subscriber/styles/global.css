@@ -1,0 +1,31 @@
+.code {
+	font-family: "Consolas", "Inconsolata", "Monaco", "Menlo", "Courier New", monospace;
+}
+
+a.delete,
+a.duplicate {
+	display: block;
+	height: 16px;
+	overflow: hidden;
+	text-indent: -9999px;
+	width: 16px;
+}
+
+a.delete {
+	background: url('../images/trash.png') no-repeat 0 0;
+}
+
+a.duplicate {
+	background: url('../images/duplicate.png') no-repeat 0 0;
+}
+
+a.add {
+	background: url(../images/add.png) no-repeat 0 50%;
+	display: block;
+	margin-bottom: 20px;
+	padding-left: 19px;
+}
+
+.mailchimp .multiple {
+	display: none;
+}

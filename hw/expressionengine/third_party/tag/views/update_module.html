@@ -1,0 +1,12 @@
+<?=$this->view('header.html');?>
+
+<form action='<?=$form_url?>' method='post'>
+
+	<h3 class="notice"><?=lang('update_tag_module')?></h3>
+
+		<input type="hidden" name="<?=$csrf_hidden_name?>"	value="<?=$CSRF_TOKEN?>" />
+		<input type="hidden" name="run_update" value="y" />
+		<p><strong><?=lang('tag_update_message')?></strong></p>
+
+		<input  type='submit' class='submit' value='<?=lang('update')?>'  />
+</form>
